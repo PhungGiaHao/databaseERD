@@ -281,6 +281,7 @@ Here are some common queries that users would likely perform on the database, al
    JOIN Enrollment e ON s.student_id = e.student_id
    WHERE e.course_id = ?;```
 2. **Find all projects (assignments, quizzes, exams, and research projects) related to a specific course.**
+   ```sql
     SELECT 'Assignment' AS project_type, a.assignment_id AS project_id, a.title, a.due_date AS date, a.max_score
     FROM Assignment a
     WHERE a.course_id = ?
@@ -299,11 +300,13 @@ Here are some common queries that users would likely perform on the database, al
     JOIN Course c ON f.department_id = c.department_id
     WHERE c.course_id = ?;
 3. **Retrieve the details of all financial transactions made by a specific student.**
+    ```sql
     SELECT t.transaction_id, t.amount, t.transaction_date, t.description
     FROM Financial_Transaction t
     JOIN Student s ON t.student_id = s.student_id
     WHERE s.student_id = ?;
 4. **Calculate the average GPA of students in a specific major.**
+    ```sql
     SELECT AVG(e.grade) as average_gpa
     FROM Enrollment e
     JOIN Student s ON e.student_id = s.student_id
@@ -311,49 +314,56 @@ Here are some common queries that users would likely perform on the database, al
     JOIN Department d ON c.department_id = d.department_id
     WHERE d.name = ?;
 5. **Retrieve the schedule of courses offered by a department in a given semester.**
+    ```sql
     SELECT c.course_id, c.name, e.semester, e.year
     FROM Course c
     JOIN Enrollment e ON c.course_id = e.course_id
     JOIN Department d ON c.department_id = d.department_id
     WHERE d.name = ? AND e.semester = ? AND e.year = ?;
 6. **Identify students who have utilized specific support services.**
+    ```sql
     SELECT s.student_id, s.first_name, s.last_name
     FROM Student s
     JOIN Mental_Health_Support mhs ON s.student_id = mhs.student_id
     WHERE mhs.description LIKE ?;
 7. **List all assignments for a particular course along with their due dates.**
+    ```sql
     SELECT a.assignment_id, a.title, a.due_date
     FROM Assignment a
     JOIN Course c ON a.course_id = c.course_id
     WHERE c.course_id = ?;
 8. **Get a list of all journals available in a specific library.**
+    ```sql
     SELECT j.journal_id, j.title, j.volume, j.issue, j.publication_year
     FROM Journal j
     JOIN Library l ON j.library_id = l.library_id
     WHERE l.name = ?;
 9. **List all scholarships awarded to a particular student.**
+      ```sql
       SELECT sc.scholarship_id, sc.name, sc.amount
       FROM Scholarship sc
       JOIN Student s ON sc.student_id = s.student_id
       WHERE s.student_id = ?;
 10. **Get the payroll details for a specific faculty member.**
+      ```sql
       SELECT p.payroll_id, p.amount, p.payment_date, p.description
       FROM Payroll p
       JOIN Faculty f ON p.faculty_id = f.faculty_id
       WHERE f.faculty_id = ?;
 11. **List all exams scheduled for a specific course.**
+      ```sql
       SELECT e.exam_id, e.title, e.date, e.max_score
       FROM Exam e
       JOIN Course c ON e.course_id = c.course_id
       WHERE c.course_id = ?;
 
 ### Notes
-**-----**
-The average GPA calculation assumes that grades are stored in a format that can be averaged directly. If grades are letter-based, additional mapping to numeric values would be required.
-**-----**
-The database design follows normalization principles to reduce redundancy and ensure data integrity. Foreign key constraints are used to enforce relationships between tables.
-**-----**
-Indexes should be created on frequently queried columns, especially foreign keys and any columns used in WHERE clauses to improve query performance.
-**-----**
-The design assumes that optional fields like phone_number in Student and Faculty can have null values. Queries should account for possible null values where appropriate.
+
+- The average GPA calculation assumes that grades are stored in a format that can be averaged directly. If grades are letter-based, additional mapping to numeric values would be required.
+
+- The database design follows normalization principles to reduce redundancy and ensure data integrity. Foreign key constraints are used to enforce relationships between tables.
+
+- Indexes should be created on frequently queried columns, especially foreign keys and any columns used in WHERE clauses to improve query performance.
+
+- The design assumes that optional fields like phone_number in Student and Faculty can have null values. Queries should account for possible null values where appropriate.
 

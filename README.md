@@ -348,8 +348,12 @@ Here are some common queries that users would likely perform on the database, al
       WHERE c.course_id = ?;
 
 ### Notes
+**-----**
 The average GPA calculation assumes that grades are stored in a format that can be averaged directly. If grades are letter-based, additional mapping to numeric values would be required.
+**-----**
 The database design follows normalization principles to reduce redundancy and ensure data integrity. Foreign key constraints are used to enforce relationships between tables.
+**-----**
 Indexes should be created on frequently queried columns, especially foreign keys and any columns used in WHERE clauses to improve query performance.
+**-----**
 The design assumes that optional fields like phone_number in Student and Faculty can have null values. Queries should account for possible null values where appropriate.
 

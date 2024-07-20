@@ -9,8 +9,8 @@ The database is designed to handle:
 - Library resources and student organizations
 - Building facilities management
 ## Entity Relationship Diagram (ERD)
-![ERD](https://drive.google.com/file/d/13gVax-Wpt-Cz1b2n6AIK8vevdWWaXR1h/view?usp=sharing)
-![database drawio](https://github.com/user-attachments/assets/d5120bf4-aa95-463d-ba7a-c4eb2b0d375f)
+[ERD](https://drive.google.com/file/d/13gVax-Wpt-Cz1b2n6AIK8vevdWWaXR1h/view?usp=sharing)
+[database drawio](https://github.com/user-attachments/assets/d5120bf4-aa95-463d-ba7a-c4eb2b0d375f)
 ## Entities and Attributes
 ### Student
 | Attribute      | Data Type     | Description                        |

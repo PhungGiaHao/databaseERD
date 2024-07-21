@@ -12,7 +12,8 @@ The database is designed to handle:
 **Open with drawio**
 [ERD](https://drive.google.com/file/d/13gVax-Wpt-Cz1b2n6AIK8vevdWWaXR1h/view?usp=sharing)
 **Image**
-[database drawio](https://github.com/user-attachments/assets/d5120bf4-aa95-463d-ba7a-c4eb2b0d375f)
+![database drawio](https://github.com/user-attachments/assets/31560774-ebdf-4a43-af95-0769889ccd9c)
+
 ## Entities and Attributes
 ### Student
 | Attribute      | Data Type     | Description                        |
